@@ -50,9 +50,15 @@ if st.button("🎧 Generate Podcast") and url:
     try:
         with st.spinner("🕸️ Scraping blog content..."):
             content = scrape_blog(url)
-            if not content:
-                st.error("❌ Could not retrieve blog content. Try another URL or check Firecrawl.")
+            st.text(f"Length of scraped text: {len(content)} characters")
+            st.code(content[:500])  # show first 500 chars for debugging
+
+            if not content or len(content.strip()) < 50:   # treat very short text as failure
+                st.error("❌ Could not retrieve blog content.")
+                st.write("Debug info ↓")
+                st.code(content)        # <-- shows whatever the scraper got
                 st.stop()
+
 
         with st.spinner("🧠 Summarizing blog content using GPT-4..."):
             summary = summarize_blog(content)

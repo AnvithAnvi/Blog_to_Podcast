@@ -1,33 +1,18 @@
-import os, time, requests
+import requests
 from bs4 import BeautifulSoup
 
 def scrape_blog(url: str) -> str:
-    """
-    Scrapes a blog with Firecrawl first; falls back to BeautifulSoup if blocked or rate-limited.
-    """
-    api_key = os.getenv("FIRECRAWL_API_KEY")
-    firecrawl_url = "https://api.firecrawl.dev/v1/scrape"
-
-    # --- Try Firecrawl ---
-    if api_key:
-        try:
-            res = requests.post(
-                firecrawl_url,
-                headers={"Authorization": f"Bearer {api_key}"},
-                json={"url": url},
-                timeout=25
-            )
-            data = res.json()
-            if res.status_code == 200 and data.get("success"):
-                return data.get("content", "")
-            if "detected_unusual_activity" in str(data):
-                print("⚠️ Firecrawl free tier blocked — switching to fallback.")
-        except Exception as e:
-            print("⚠️ Firecrawl exception:", e)
-
-    # --- Fallback: local HTML parsing ---
-    print("⚙️ Using fallback scraper (BeautifulSoup)...")
-    r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
-    soup = BeautifulSoup(r.text, "html.parser")
-    text = " ".join(p.get_text() for p in soup.find_all("p"))
-    return text[:8000]
+    """Simple HTML scraper that always returns something or an explicit error."""
+    try:
+        res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
+        if res.status_code != 200:
+            return f"❌ HTTP error {res.status_code}"
+        soup = BeautifulSoup(res.text, "html.parser")
+        text = " ".join(p.get_text(strip=True) for p in soup.find_all("p"))
+        if not text:
+            text = " ".join(div.get_text(strip=True) for div in soup.find_all("div"))
+        if not text:
+            return "❌ No visible text found on page (site may use JavaScript)."
+        return text[:8000]
+    except Exception as e:
+        return f"❌ Exception while scraping: {e}"
