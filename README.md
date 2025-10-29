@@ -38,22 +38,6 @@ ELEVENLABS_API_KEY=sk-your-key
 ```bash
 streamlit run app.py
 ```
-
----
-
-## 🌐 Deployment on Streamlit Cloud
-
-1. Push this repo to GitHub  
-2. Go to [https://streamlit.io/cloud](https://streamlit.io/cloud)
-3. Click **New App** → choose repo → set main file path as `app.py`
-4. Add your keys in **Settings → Edit Secrets**:
-
-```toml
-OPENAI_API_KEY = "sk-your-openai-key"
-FIRECRAWL_API_KEY = "fc-your-firecrawl-key"
-ELEVENLABS_API_KEY = "sk-your-elevenlabs-key"
-```
-
 ---
 
 ## 🧾 Project Structure
