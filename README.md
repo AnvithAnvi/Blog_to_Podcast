@@ -1,19 +1,32 @@
 # 🎧 Blog to Podcast Agent
 
-**Blog to Podcast Agent** is a Streamlit-based AI application that converts any public blog post into an engaging podcast episode.  
-It uses **OpenAI GPT-4** for summarization, **Firecrawl API** for scraping blog content, and **ElevenLabs** for realistic voice narration.  
+## 📖 Description
+**Blog to Podcast Agent** is an AI-powered Streamlit web application that transforms any public blog post into an engaging podcast.  
+It uses **GPT-4** to summarize the content, **Firecrawl API** (or BeautifulSoup fallback) to scrape the blog text, and **ElevenLabs API** to generate natural-sounding podcast audio.  
 
-Turn written blogs into immersive audio experiences in seconds 🎙️
+Turn any blog into a voice that speaks — fast, intelligent, and human-like 🎙️
 
 ---
 
-## 🧠 Features
-- 🕸️ Smart Blog Scraping (Firecrawl + BeautifulSoup fallback)
-- ✍️ AI Summarization using GPT-4
-- 🎤 Podcast Generation via ElevenLabs
-- 💾 MP3 Download Support
-- 🔒 Secure API key handling with .env or Streamlit Secrets
-- ⚙️ Works locally and on Streamlit Cloud
+## 🌟 Features
+- 🕸️ **Smart Blog Scraping:** Automatically extracts blog text using Firecrawl or fallback parser  
+- 🧠 **AI Summarization (GPT-4):** Generates concise, listener-friendly versions of long blogs  
+- 🎤 **Podcast Generation (ElevenLabs):** Produces realistic, human-like speech in seconds  
+- 💾 **One-Click Download:** Download your podcast as an MP3 file instantly  
+- 🔐 **Secure API Key Management:** Environment variables handled via `.env` or Streamlit Secrets  
+- ⚙️ **Cross-Platform:** Works locally on any OS or on Streamlit Cloud deployment  
+
+---
+
+## 🧠 Tech Stack
+| Component | Technology |
+|------------|-------------|
+| **Frontend** | Streamlit |
+| **AI Model** | OpenAI GPT-4 |
+| **Scraping** | Firecrawl API + BeautifulSoup |
+| **Audio Generation** | ElevenLabs Voice API |
+| **Language** | Python 3.10+ |
+| **Deployment** | Streamlit Cloud |
 
 ---
 
@@ -56,3 +69,4 @@ blog_to_podcast/
 
 ## 👨‍💻 Author
 **Krishna Anvith Vattikuti** 
+Vattikutianvith@gmail.com
