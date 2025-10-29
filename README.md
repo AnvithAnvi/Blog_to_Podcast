@@ -68,4 +68,6 @@ blog_to_podcast/
 ---
 
 ## 👨‍💻 Author
-**Krishna Anvith Vattikuti** 
+**Krishna Anvith Vattikuti**  
+📍 New Jersey, NJ  
+📧 vattikutianvith@gmail.com 
