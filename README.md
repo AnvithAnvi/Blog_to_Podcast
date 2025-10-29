@@ -69,4 +69,3 @@ blog_to_podcast/
 
 ## 👨‍💻 Author
 **Krishna Anvith Vattikuti** 
-Vattikutianvith@gmail.com
